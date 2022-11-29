@@ -20,10 +20,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ZSQ-Cc-Uti">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="852" id="1tg-eX-B4F"/>
-                                    <constraint firstAttribute="width" constant="393" id="GwY-lT-Bzp"/>
-                                </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="vnF-P3-vdy">
                                 <rect key="frame" x="109" y="92" width="175" height="253"/>
@@ -109,17 +105,16 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZSQ-Cc-Uti" secondAttribute="trailing" id="IgQ-3b-oD7"/>
                             <constraint firstItem="vnF-P3-vdy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KhK-ng-ErE"/>
-                            <constraint firstItem="ZSQ-Cc-Uti" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SRu-YI-UM1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="ZSQ-Cc-Uti" secondAttribute="top" constant="59" id="UMO-hE-EIB"/>
                             <constraint firstItem="ZSQ-Cc-Uti" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UbI-g6-Od8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c2s-Dh-bKA" secondAttribute="trailing" constant="20" id="ffo-Kd-hHF"/>
                             <constraint firstItem="vnF-P3-vdy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32.999999999999972" id="fuJ-gP-m0a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c2s-Dh-bKA" secondAttribute="bottom" constant="20" id="jyo-up-PHl"/>
                             <constraint firstItem="ZSQ-Cc-Uti" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="rJz-f4-cc7"/>
-                            <constraint firstItem="ZSQ-Cc-Uti" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sIq-st-E44"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityLabel" destination="uYT-dB-zTt" id="9a7-uV-Idr"/>
                         <outlet property="feelsLikeTempLabel" destination="r2D-iu-ziU" id="eFY-8k-9PA"/>
                         <outlet property="tempLabel" destination="g9e-ER-jYG" id="pR3-hy-tZh"/>
                         <outlet property="weatherImage" destination="3tV-yC-qMx" id="Nxs-JD-14s"/>
