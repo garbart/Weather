@@ -6,30 +6,34 @@
 //
 
 import Foundation
+import CoreLocation
 
 class NetworkWeatherManager {
 
-    var onCompletion: ((WeatherData) -> Void)?
+    private let currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather"
+    private let session = URLSession(configuration: .default)
     
-    func fetchWeather(forCity cityName: String) {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&apikey=\(apiKey)&units=metric") else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            guard let rawWeatherData = self.parseJSON(withData: data) else { return }
-            guard let weather = WeatherData(from: rawWeatherData) else { return }
-            self.onCompletion?(weather)
-        }
-        task.resume()
+    func fetchWeather(forCity cityId: Int, onCompletion: @escaping (WeatherData) -> Void) {
+        guard let url = URL(string: "\(currentWeatherURL)?id=\(cityId)&apikey=\(apiKey)&units=metric") else { return }
+        print(url)
+        performRequest(url: url, onCompletion: onCompletion)
     }
     
-    func parseJSON(withData data: Data) -> RawWeatherData? {
-        let decoder = JSONDecoder()
-        do {
-            return try decoder.decode(RawWeatherData.self, from: data)
-        } catch let error as NSError {
-            print(error.localizedDescription)
+    func fetchWeather(forPosition position: CLLocationCoordinate2D, onCompletion: @escaping (WeatherData) -> Void) {
+        guard let url = URL(string: "\(currentWeatherURL)?lat=\(position.latitude)&lon=\(position.longitude)&apikey=\(apiKey)&units=metric") else { return }
+        performRequest(url: url, onCompletion: onCompletion)
+    }
+    
+    func performRequest(url: URL, onCompletion: @escaping (WeatherData) -> Void) {
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
+            guard let _ = self,
+                  let data = data,
+                  let rawWeatherData: RawWeatherData = JSONParser.parse(fromData: data),
+                  let weather = WeatherData(from: rawWeatherData) else {
+                return
+            }
+            onCompletion(weather)
         }
-        return nil
+        task.resume()
     }
 }
