@@ -1,4 +1,4 @@
-Weather – imple application that displays the weather of the city you are interested in. Your city can be determined automatically.
+Weather – simple application that displays the weather of the city you are interested in. Your city can be determined automatically.
 
 
 ### Dark theme, New York:
