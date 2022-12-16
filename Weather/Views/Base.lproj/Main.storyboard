@@ -81,14 +81,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2s-Dh-bKA">
                                 <rect key="frame" x="304" y="743.66666666666663" width="69" height="54.333333333333371"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYT-dB-zTt">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYT-dB-zTt">
                                         <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="54.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                         <color key="textColor" name="AccentColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIl-D4-M8i">
-                                        <rect key="frame" x="14.666666666666689" y="0.0" width="54.333333333333343" height="54.333333333333336"/>
+                                        <rect key="frame" x="14.666666666666686" y="0.0" width="54.333333333333343" height="54.333333333333336"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wIl-D4-M8i" secondAttribute="height" multiplier="1:1" id="5Ce-mh-x4t"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="WxX-ps-M3m"/>
@@ -103,23 +103,46 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6DQ-fv-kww">
+                                <rect key="frame" x="20.000000000000004" y="743.66666666666663" width="54.333333333333343" height="54.333333333333371"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bQ-cP-uUv">
+                                        <rect key="frame" x="0.0" y="0.0" width="54.333333333333336" height="54.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="0bQ-cP-uUv" secondAttribute="height" multiplier="1:1" id="DXc-WE-2Dv"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="mBL-aF-PcK"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="location.circle.fill" catalog="system" title=" ">
+                                            <color key="baseForegroundColor" name="AccentColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="updateWithCurrentLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wys-yH-dnf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZSQ-Cc-Uti" secondAttribute="trailing" id="IgQ-3b-oD7"/>
                             <constraint firstItem="vnF-P3-vdy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KhK-ng-ErE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6DQ-fv-kww" secondAttribute="bottom" constant="20" id="QhJ-KH-7lt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="ZSQ-Cc-Uti" secondAttribute="top" constant="59" id="UMO-hE-EIB"/>
                             <constraint firstItem="ZSQ-Cc-Uti" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UbI-g6-Od8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c2s-Dh-bKA" secondAttribute="trailing" constant="20" id="ffo-Kd-hHF"/>
                             <constraint firstItem="vnF-P3-vdy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32.999999999999972" id="fuJ-gP-m0a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c2s-Dh-bKA" secondAttribute="bottom" constant="20" id="jyo-up-PHl"/>
+                            <constraint firstItem="c2s-Dh-bKA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6DQ-fv-kww" secondAttribute="trailing" constant="30" id="nwT-hK-oHF"/>
                             <constraint firstItem="ZSQ-Cc-Uti" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="rJz-f4-cc7"/>
+                            <constraint firstItem="6DQ-fv-kww" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wO6-RC-dzK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lKf-Wk-XQC"/>
                     <connections>
                         <outlet property="cityLabel" destination="uYT-dB-zTt" id="9a7-uV-Idr"/>
+                        <outlet property="currentLocation" destination="0bQ-cP-uUv" id="IRG-hJ-tkj"/>
                         <outlet property="feelsLikeTempLabel" destination="r2D-iu-ziU" id="eFY-8k-9PA"/>
                         <outlet property="tempLabel" destination="g9e-ER-jYG" id="pR3-hy-tZh"/>
                         <outlet property="weatherImage" destination="3tV-yC-qMx" id="Nxs-JD-14s"/>
@@ -181,6 +204,7 @@
     </scenes>
     <resources>
         <image name="background" width="375" height="667"/>
+        <image name="location.circle.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="questionmark.square.fill" catalog="system" width="128" height="114"/>
         <namedColor name="AccentColor">

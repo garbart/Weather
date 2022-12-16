@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var feelsLikeTempLabel: UILabel!
     @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var currentLocation: UIButton!
     
     private let networkWeatherManager = NetworkWeatherManager()
     private let locationManager = CLLocationManager()
@@ -32,6 +33,10 @@ class MainViewController: UIViewController {
             self.feelsLikeTempLabel.text = weatherData.feelsLikeTemperatureString
             self.cityLabel.text = weatherData.cityName
         }
+    }
+    
+    @IBAction private func updateWithCurrentLocation(_ sender: Any) {
+        locationManager.requestLocation()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
